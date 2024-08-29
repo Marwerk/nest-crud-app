@@ -9,3 +9,5 @@ import { PokemonModule } from './pokemon/pokemon.module';
   providers: [AppService],
 })
 export class AppModule {}
+
+// root module
