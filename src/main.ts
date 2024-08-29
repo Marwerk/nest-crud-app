@@ -7,4 +7,4 @@ async function bootstrap() {
 }
 bootstrap();
 
-// The entry file of the application which uses the core function NestFactory to create a Nest application instance.
+// The entry file of our application which uses NestFactory to create and start a Nest instance
