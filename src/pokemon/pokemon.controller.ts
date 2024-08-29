@@ -8,7 +8,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { PokemonService } from './pokemon.service';
-import { Pokemon } from './pokemon.model';
+import { PokemonEntry } from './pokemon.model';
 
 @Controller('pokemon')
 // this controller decorator prefixes all routes with /pokemon
@@ -16,22 +16,28 @@ export class PokemonController {
   constructor(private readonly pokemonService: PokemonService) {}
 
   @Get()
-  getAllPokemon(): Pokemon[] {
+  getAllPokemon(): PokemonEntry[] {
     return this.pokemonService.getAllPokemon();
   }
 
   @Get(':id')
-  getPokemon(@Param('id') id: string): Pokemon {
+  getPokemon(@Param('id') id: string): PokemonEntry {
     return this.pokemonService.getPokemon(Number(id));
   }
 
   @Post()
-  createPokemon(@Body() pokemon: Pokemon): Pokemon {
+  createPokemon(@Body() pokemon: PokemonEntry): PokemonEntry {
     return this.pokemonService.createPokemon(pokemon);
   }
 
   @Put(':id')
-  updatePokemon(@Param('id') id: string, @Body() pokemon: Pokemon): Pokemon {
+  updatePokemon(
+    @Param('id') id: string,
+    @Body() pokemon: PokemonEntry,
+  ): PokemonEntry {
+    // Decorators that tell NestJS how to extract data from the request
+    // Param() lets us access route parameters and @Body() decorator allows us to access the request body
+    // id: string is TypeScript syntax saying "id should be treated as string"
     return this.pokemonService.updatePokemon(Number(id), pokemon);
   }
 
@@ -42,4 +48,3 @@ export class PokemonController {
 }
 
 // define our API endpoints
-// @Body() decorator allows us to access the request body, while @Param() lets us access route parameters

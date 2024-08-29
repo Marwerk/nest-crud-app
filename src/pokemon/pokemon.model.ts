@@ -1,4 +1,4 @@
-export class Pokemon {
+export class PokemonEntry {
   id: number;
   name: string;
   type: string;
@@ -13,4 +13,5 @@ export class Pokemon {
 }
 
 // The model defines the structure of our pokemon (data).
-// We're probably gonna use some kind of db schema for this
+// In Typescript, classes can be used as types, therefor, we are not just creating a blueprint for Pokemon objects,
+// but we're also defining a type that can be used in type annotations
